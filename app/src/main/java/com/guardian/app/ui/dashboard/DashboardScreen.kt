@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.PowerManager
 import android.provider.Settings
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -442,9 +443,7 @@ fun SubsystemCard(
                     onClick = onAction,
                     enabled = actionEnabled,
                     colors = ButtonDefaults.outlinedButtonColors(contentColor = TextPrimary),
-                    border = ButtonDefaults.outlinedButtonBorder.copy(
-                        brush = androidx.compose.ui.graphics.SolidColor(ShieldBlue)
-                    )
+                    border = BorderStroke(1.dp, ShieldBlue)
                 ) {
                     Text(actionLabel, style = MaterialTheme.typography.labelMedium)
                 }

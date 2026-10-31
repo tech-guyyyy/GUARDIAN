@@ -165,7 +165,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: 'gradle'
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v4
@@ -181,13 +180,27 @@ jobs:
           gradle-version: '8.9'
           cache-disabled: true
 
+      - name: Generate Official Gradle Wrapper
+        run: |
+          gradle wrapper --gradle-version 8.9 --distribution-type bin
+          chmod +x gradlew
+
       - name: Run Unit Tests
-        run: gradle testDebugUnitTest --no-daemon --info --stacktrace --console=plain
+        run: ./gradlew testDebugUnitTest --no-daemon --info --stacktrace --console=plain
 
       - name: Build Debug APK
-        run: gradle assembleDebug --no-daemon --stacktrace
+        run: ./gradlew assembleDebug --no-daemon --info --stacktrace --console=plain
+
+      - name: Upload Test Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-results
+          path: app/build/reports/tests/testDebugUnitTest/
+          retention-days: 7
 
       - name: Upload Debug APK
+        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: guardian-debug-apk
