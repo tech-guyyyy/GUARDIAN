@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Non-destructive device admin policy definitions for GUARDIAN -->
+<!-- Strictly excludes wipe-data, reset-password, and remote lock capabilities -->
+<device-admin xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-policies>
+        <watch-login />
+    </uses-policies>
+</device-admin>

@@ -1,0 +1,6 @@
+{
+  "name": "GUARDIAN",
+  "description": "Personal accountability and protection application providing system-wide DNS filtering, hardware-backed cryptography, and anti-tamper security for Android.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
