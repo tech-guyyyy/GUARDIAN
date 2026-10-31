@@ -179,10 +179,10 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           gradle-version: '8.9'
-          cache-read-only: false
+          cache-disabled: true
 
       - name: Run Unit Tests
-        run: gradle testDebugUnitTest --no-daemon --stacktrace
+        run: gradle testDebugUnitTest --no-daemon --info --stacktrace --console=plain
 
       - name: Build Debug APK
         run: gradle assembleDebug --no-daemon --stacktrace
